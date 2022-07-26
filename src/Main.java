@@ -82,8 +82,14 @@ public class Main {
 			FileReader filereader = new FileReader(file);
 
 			// create csvReader object and skip first Line
-			CSVReader csvReader = new CSVReaderBuilder(filereader).withSkipLines(1).build();
-			allData = csvReader.readAll();
+			//CSVReader csvReader = new CSVReaderBuilder(filereader).withSkipLines(1).build();
+			//allData = csvReader.readAll();
+
+			BufferedReader br = new BufferedReader(filereader);
+			String line;
+			while((line=br.readLine())!=null){
+			    allData.add(line.split(","));
+			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
